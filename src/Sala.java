@@ -1,0 +1,30 @@
+abstract class Sala extends Subject {
+    protected String nome;
+    protected int capacidade;
+    protected boolean disponivel;
+
+    public Sala(String nome, int capacidade) {
+        this.nome = nome;
+        this.capacidade = capacidade;
+        this.disponivel = true;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void liberar() {
+        disponivel = true;
+        this.notifyObservers();
+    }
+
+    abstract void exibirInfo();
+}
