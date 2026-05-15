@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Faculdade {
     private ArrayList<Usuario> usuarios;
+    private List<Sala> salas = new ArrayList<>();
 
     public Faculdade() {
         this.usuarios = new ArrayList<Usuario>();
@@ -37,5 +38,13 @@ public class Faculdade {
         }
 
         return null;
+    }
+
+    public void addSala(Sala sala) {
+        salas.add(sala);
+    }
+
+    public List<Sala> getSalas() {
+        return salas;
     }
 }

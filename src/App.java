@@ -54,6 +54,12 @@ public class App {
 
         Sala sala5 = grupoFactory.criarSala("Sala de Grupo A", 10);
 
+        faculdade.addSala(sala1);
+        faculdade.addSala(sala2);
+        faculdade.addSala(sala3);
+        faculdade.addSala(sala4);
+        faculdade.addSala(sala5);
+
         // Prints das salas criadas
         System.out.println("Sala criada: " + sala1.getNome());
         System.out.println("Sala criada: " + sala2.getNome());

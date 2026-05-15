@@ -8,11 +8,13 @@ public class Terminal {
     private SistemaDeReservas sistema;
     private Faculdade faculdade;
     private Scanner scanner;
+    private ConsultaSalasProxy consultaProxy;
 
     public Terminal(SistemaDeReservas sistema, Faculdade faculdade) {
         this.sistema = sistema;
         this.faculdade = faculdade;
         this.scanner = new Scanner(System.in);
+        this.consultaProxy = new ConsultaSalasProxy(sistema);
     }
 
     public Terminal(SistemaDeReservas sistema) {
@@ -48,6 +50,10 @@ public class Terminal {
                 case "exit":
                     executando = false;
                     System.out.println("Encerrando sistema...");
+                    break;
+
+                case "consultar":
+                    consultarSalasDisponiveis();
                     break;
 
                 default:
@@ -230,8 +236,50 @@ public class Terminal {
         System.out.println("crsala   -> Cancelar reserva");
         System.out.println("relat    -> Gerar relatório");
         System.out.println("usuarios -> Listar usuários cadastrados");
+        System.out.println("consultar - Consultar salas disponíveis");
         System.out.println("exit     -> Sair");
         System.out.print("\nDigite um comando: ");
+    }
+
+    private void consultarSalasDisponiveis() {
+
+        LocalDate data = lerData(
+                "Digite a data da consulta (AAAA-MM-DD): "
+        );
+
+        LocalTime inicio = lerHora(
+                "Digite o horário inicial (HH:MM): "
+        );
+
+        LocalTime fim = lerHora(
+                "Digite o horário final (HH:MM): "
+        );
+
+        List<Sala> disponiveis =
+                consultaProxy.consultarSalasDisponiveis(
+                        faculdade.getSalas(),
+                        data,
+                        inicio,
+                        fim
+                );
+
+        System.out.println("\nSALAS DISPONÍVEIS:\n");
+
+        if (disponiveis.isEmpty()) {
+
+            System.out.println(
+                    "Nenhuma sala disponível."
+            );
+
+            return;
+        }
+
+        for (Sala sala : disponiveis) {
+
+            System.out.println(
+                    "- " + sala.getNome()
+            );
+        }
     }
 
     private void listarUsuarios() {
@@ -261,4 +309,6 @@ public class Terminal {
     public Faculdade getFaculdade() {
         return this.faculdade;
     }
+
+    
 }
