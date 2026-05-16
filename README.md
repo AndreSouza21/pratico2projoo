@@ -22,4 +22,5 @@ Ao usar o comando `consultar`, informe a data no formato `AAAA-MM-DD` e os horá
 ## Autores
 
 André Souza de Almeida <br>
-João Pedro Soldera Snabaitis Markues
+João Pedro Soldera Snabaitis Markues <br>
+João Pedro Navarro Okita
