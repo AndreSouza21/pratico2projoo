@@ -21,5 +21,5 @@ Ao usar o comando `consultar`, informe a data no formato `AAAA-MM-DD` e os horá
 
 ## Autores
 
-- Autor 1
-- Autor 2
+André Souza de Almeida
+João Pedro Soldera Snabaitis Markues
